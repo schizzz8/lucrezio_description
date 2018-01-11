@@ -139,7 +139,7 @@
     </joint>
   </transmission>
 
-  <!-- LASER 
+  <!-- LASER -->
   <link name="laser_link">
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -159,17 +159,17 @@
       <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
     </inertial>
   </link>
--->
 
-  <!-- LASER JOINT 
+
+  <!-- LASER JOINT -->
   <joint name="laser_joint" type="fixed">
     <axis xyz="0 1 0" />
     <origin xyz="0.1 0 0.1" rpy="0 0 0" />
     <parent link="base_link" />
     <child  link="laser_link" />
   </joint>
--->
-  <!-- HOKUYO SENSOR 
+
+  <!-- HOKUYO SENSOR -->
   <gazebo reference="laser_link">
     <sensor type="gpu_ray" name="head_hokuyo_sensor">
       <pose>0 0 0 0 0 0</pose>
@@ -201,9 +201,9 @@
       </plugin>
     </sensor>
   </gazebo>
--->
 
-  <!-- CAMERA 
+
+  <!-- CAMERA -->
   <link name="camera_link">
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -226,22 +226,22 @@
       <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
     </inertial>
   </link>
-  -->
+  
 
-  <!-- CAMERA JOINT 
+  <!-- CAMERA JOINT -->
   <joint name="camera_joint" type="fixed">
     <axis xyz="0 1 0" />
     <origin xyz="0 0 1.0" rpy="0 0 0"/>
     <parent link="base_link"/>
     <child link="camera_link"/>
   </joint>
-  -->
+  
 
-  <!-- XTION SENSOR 
+  <!-- XTION SENSOR -->
   <gazebo reference="camera_link">
     <sensor type="depth" name="rgbd_camera">
       <always_on>true</always_on>
-      <update_rate>20.0</update_rate>
+      <update_rate>10.0</update_rate>
       <camera>
         <horizontal_fov>${60.0*M_PI/180.0}</horizontal_fov>
         <image>
@@ -274,8 +274,6 @@
       </plugin>
     </sensor>
   </gazebo>
--->
-
 
   <!-- LOGICAL CAMERA -->
   <link name="logical_camera_link">
@@ -301,7 +299,6 @@
     </inertial>
   </link>
   
-
   <!-- LOGICAL CAMERA JOINT -->
   <joint name="logical_camera_joint" type="fixed">
     <axis xyz="0 1 0" />
@@ -310,7 +307,6 @@
     <child link="logical_camera_link"/>
   </joint>
   
-
   <!-- LOGICAL CAMERA SENSOR -->
   <gazebo reference="logical_camera_link">
       <sensor name="logical_camera" type="logical_camera">

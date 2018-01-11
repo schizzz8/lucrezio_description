@@ -249,7 +249,7 @@
         </image>
         <clip>
           <near>0.02</near>
-          <far>5.0</far>
+          <far>8.0</far>
         </clip>
       </camera>
       <plugin name="rgdb_camera_controller" filename="libgazebo_ros_openni_kinect.so">
