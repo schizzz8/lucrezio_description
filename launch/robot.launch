@@ -1,5 +1,16 @@
+<?xml version="1.0"?>
 <launch>
-  
+
+  <!-- Launch the empty world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="worlds/empty.world"/> 
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="recording" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
   <!-- push robot_description to factory and spawn robot in gazebo -->
   <arg name="model" default="$(find lucrezio_description)/urdf/lucrezio.urdf.xacro"/>
   <param name="robot_description" command="$(find xacro)/xacro.py $(arg model)" />
@@ -18,10 +29,4 @@
 
   <node pkg="tf" type="static_transform_publisher" name="camera_link_broadcaster" args="0 0 0 -0.5 0.5 -0.5 0.5 /camera_link /camera_depth_optical_frame 100" />
 
-  <!-- Tele-operate the robot 
-  <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
-    <param name="default_topic" value="/lucrezio_diff_drive_controller/cmd_vel"/>
-  </node> -->
-
 </launch>
-
